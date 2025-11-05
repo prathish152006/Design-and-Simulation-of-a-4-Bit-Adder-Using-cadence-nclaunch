@@ -32,10 +32,10 @@ The aim is to design and simulate a **4-bit Adder** using **Verilog HDL** and ve
 
 ## Verilog Code for 1-Bit Full Adder
 ```verilog
-module full_adder (A, B, Cin,Sum, Cout);
-    input A, B, Cin;
-    output Sum, Cout;
-
+module full_adder (
+    input A, B, Cin,
+    output Sum, Cout
+);
     assign Sum = A ^ B ^ Cin;
     assign Cout = (A & B) | (B & Cin) | (A & Cin);
 endmodule
@@ -47,12 +47,12 @@ endmodule
 
 ## Verilog Code for 4-Bit Ripple carry Adder
 ```verilog
-module adder_4bit (A,B,Cin,Sum,Cout);
-    input [3:0] A, B;
-    input Cin;
-    output [3:0] Sum;
-    output Cout;
-
+module adder_4bit (
+    input [3:0] A, B,
+    input Cin,
+    output [3:0] Sum,
+    output Cout
+);
     wire C1, C2, C3;
 
     full_adder FA0 (A[0], B[0], Cin, Sum[0], C1);
@@ -70,8 +70,10 @@ module tb_adder_4bit;
     wire Cout;
 
     // Instantiate the 4-bit adder
-    adder_4bit UUT (A,B,Cin,Sum,Cout);
-        
+    adder_4bit UUT (
+        .A(A), .B(B), .Cin(Cin),
+        .Sum(Sum), .Cout(Cout)
+    );
 
     initial begin
                
@@ -100,7 +102,9 @@ endmodule
 ![Screenshot 2025-05-21 155538](https://github.com/user-attachments/assets/187ebe28-40e2-44b2-9b78-d08bdc67d62c)
 
 ### Simulation Waveforms
-![Screenshot 2025-05-21 155512](https://github.com/user-attachments/assets/4d1457be-ef30-4b8b-a58d-aa8ac39c078c)
+<img width="1920" height="1080" alt="Screenshot 2025-10-27 155545" src="https://github.com/user-attachments/assets/e23ad0f6-0151-4231-98ee-84d13bb9193a" />
+
+
 
 
 
